@@ -1,0 +1,41 @@
+.info_editable{
+    display: flex;
+}
+
+.info_editable .edit,
+.info_editable .check,
+.info_editable .cancel{
+    border: solid 1px;
+    margin: 2px;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.edit{
+    color:orange;
+}
+
+.check{
+    color:rgb(2, 214, 143);
+}
+
+.cancel{
+    color:rgb(235, 74, 74);
+}
+
+.edit:hover{
+    background:orange;
+    color:white;
+}
+
+.check:hover{
+    background:rgb(2, 214, 143);
+    color:white;
+}
+
+.cancel:hover{
+    background:rgb(235, 74, 74);
+    color:white;
+}    
