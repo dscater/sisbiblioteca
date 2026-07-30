@@ -8,7 +8,7 @@
     <div class="login-box">
         <div class="login-logo">
             <a href=""><b>{{ App\Models\RazonSocial::first()->nombre }}</b></a>
-            <img src="{{ asset('imgs/' . App\Models\RazonSocial::first()->logo) }}" alt="Logo">
+            <img src="{{ asset('imgs/' . App\Models\RazonSocial::first()->logo) }}" class="rounded" alt="Logo">
         </div>
         <!-- /.login-logo -->
         <div class="card">
@@ -46,10 +46,10 @@
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-12 mb-2">
-                            <button type="submit" class="btn btn-primary bg-navy btn-block btn-sm">Acceder</button>
+                            <button type="submit" class="btn btn-primary btn-block btn-sm">Acceder</button>
                         </div>
                         <div class="col-12">
-                            <a href="{{ route('inicio') }}" class="btn btn-block btn-outline-primary btn-sm">Inicio</a>
+                            <a href="{{ route('inicio') }}" class="btn btn-block btn-outline-info btn-sm">Portal</a>
                         </div>
                         <!-- /.col -->
                     </div>

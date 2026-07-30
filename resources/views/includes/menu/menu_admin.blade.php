@@ -6,14 +6,21 @@
 </li>
 
 {{-- menu-is-opening menu-open --}}
-<li class="nav-item @if(request()->is('libros*') || request()->is('ubicacions*') || request()->is('areas*') || request()->is('autors*') || request()->is('edicions*') || request()->is('volumens*') || request()->is('lugars*') || request()->is('editorials*'))menu-is-opening menu-open active @endif">
+<li class="nav-item @if (request()->is('libros*') ||
+        request()->is('ubicacions*') ||
+        request()->is('areas*') ||
+        request()->is('autors*') ||
+        request()->is('edicions*') ||
+        request()->is('volumens*') ||
+        request()->is('lugars*') ||
+        request()->is('editorials*')) menu-is-opening menu-open active @endif">
     <a href="#" class="nav-link">
         <i class="nav-icon far fa-list-alt"></i>
         <p>Libros <i class="fas fa-angle-left right"></i></p>
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="{{ route('libros.index') }}" class="nav-link @if(request()->is('libros*') || request()->is('foto_libros*'))active @endif">
+            <a href="{{ route('libros.index') }}" class="nav-link @if (request()->is('libros*') || request()->is('foto_libros*')) active @endif">
                 <i class="nav-icon far fa-circle"></i>
                 <p>Libros</p>
             </a>
@@ -26,36 +33,31 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('areas.index') }}"
-                class="nav-link {{ request()->is('areas*') ? 'active' : '' }}">
+            <a href="{{ route('areas.index') }}" class="nav-link {{ request()->is('areas*') ? 'active' : '' }}">
                 <i class="nav-icon far fa-circle"></i>
                 <p>Áreas</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('autors.index') }}"
-                class="nav-link {{ request()->is('autors*') ? 'active' : '' }}">
+            <a href="{{ route('autors.index') }}" class="nav-link {{ request()->is('autors*') ? 'active' : '' }}">
                 <i class="nav-icon far fa-circle"></i>
                 <p>Autores</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('edicions.index') }}"
-                class="nav-link {{ request()->is('edicions*') ? 'active' : '' }}">
+            <a href="{{ route('edicions.index') }}" class="nav-link {{ request()->is('edicions*') ? 'active' : '' }}">
                 <i class="nav-icon far fa-circle"></i>
                 <p>Ediciones</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('volumens.index') }}"
-                class="nav-link {{ request()->is('volumens*') ? 'active' : '' }}">
+            <a href="{{ route('volumens.index') }}" class="nav-link {{ request()->is('volumens*') ? 'active' : '' }}">
                 <i class="nav-icon far fa-circle"></i>
                 <p>Volumenes</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('lugars.index') }}"
-                class="nav-link {{ request()->is('lugars*') ? 'active' : '' }}">
+            <a href="{{ route('lugars.index') }}" class="nav-link {{ request()->is('lugars*') ? 'active' : '' }}">
                 <i class="nav-icon far fa-circle"></i>
                 <p>Lugares</p>
             </a>
@@ -74,6 +76,13 @@
     <a href="{{ route('prestamos.index') }}" class="nav-link {{ request()->is('prestamos*') ? 'active' : '' }}">
         <i class="nav-icon fa fa-list"></i>
         <p>Préstamos</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('prestamos.index') }}" class="nav-link {{ request()->is('prestamos*') ? 'active' : '' }}">
+        <i class="nav-icon fa fa-bell"></i>
+        <p>Notificaciones</p>
     </a>
 </li>
 

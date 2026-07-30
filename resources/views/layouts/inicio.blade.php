@@ -38,174 +38,171 @@
         $carrusels = App\Models\Carrusel::orderBy('id', 'ASC')->get();
         $areas = App\Models\Area::all();
     @endphp
-    <header>
 
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            @if (count($carrusels) > 0)
-                @php
-                    $cont = 0;
-                @endphp
-                <ol class="carousel-indicators">
-                    @foreach ($carrusels as $carrusel)
-                        @php
-                            $active = '';
-                            if ($cont == 0) {
-                                $active = 'active';
-                            } else {
-                                $active = '';
-                            }
-                        @endphp
-                        <li data-target="#carouselExampleIndicators" data-slide-to="{{ $cont }}"
-                            class="{{ $active }}"></li>
-                        @php
-                            $cont++;
-                        @endphp
-                    @endforeach
-                </ol>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg bg-white p-0">
+            <a class="navbar-brand" href="{{ route('inicio') }}">
+                <img src="{{ asset('imgs/' . App\Models\RazonSocial::first()->logo) }}" alt="Logo" class="rounded">
+                {{ App\Models\RazonSocial::first()->alias }}
+            </a>
+            <button class="navbar-toggler collapsed ml-auto mr-3" type="button" data-toggle="collapse"
+                data-target="#navBarPrincipal" aria-controls="navBarPrincipal" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="fa fa-align-justify"></span>
+            </button>
 
-                @php
-                    $cont = 0;
-                @endphp
-                <div class="carousel-inner">
-                    @foreach ($carrusels as $carrusel)
-                        @php
-                            $active = '';
-                            if ($cont == 0) {
-                                $active = 'active';
-                            } else {
-                                $active = '';
-                            }
-                        @endphp
-                        <div class="carousel-item {{ $active }}">
-                            <img class="d-block w-100" src="{{ asset('imgs/carrusel/' . $carrusel->imagen) }}"
-                                alt="Imagen {{ $cont + 1 }}">
+            <div class="navbar-collapse collapse" id="navBarPrincipal">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item {{ request()->is('/') ? 'active' : '' }}">
+                        <a class="nav-link text-white" href="{{ route('inicio') }}">Inicio <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item {{ request()->is('mas_vistos') ? 'active' : '' }}">
+                        <a class="nav-link text-white" href="{{ route('mas_vistos') }}">Más Vistos</a>
+                    </li>
+                    <li class="nav-item {{ request()->is('revistas') ? 'active' : '' }}">
+                        <a class="nav-link text-white" href="{{ route('revistas') }}">Revistas</a>
+                    </li>
+                    <li class="nav-item {{ request()->is('areas*') ? 'active' : '' }} dropdown">
+                        <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Áreas
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right bg-white" aria-labelledby="navbarDropdown">
+                            @foreach ($areas as $value)
+                                <a class="dropdown-item"
+                                    href="{{ route('areas', $value->id) }}">{{ $value->nombre }}</a>
+                            @endforeach
                         </div>
-                        @php
-                            $cont++;
-                        @endphp
-                    @endforeach
-                </div>
-            @else
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="{{ asset('imgs/carrusel/1.jpg') }}" alt="First slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="{{ asset('imgs/carrusel/2.png') }}" alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="{{ asset('imgs/carrusel/3.jpg') }}" alt="Third slide">
-                    </div>
-                </div>
-            @endif
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-
-        <div class="descripcion">
-            {{-- <div class="logo">
-                <img src="{{asset('imgs/'.App\Models\RazonSocial::first()->logo)}}" alt="Logo">
-            </div> --}}
-            <div class="nom_empresa">
-                <nav class="navbar navbar-expand-lg bg-white p-0">
-                    <a class="navbar-brand" href="{{ route('inicio') }}">
-                        <img src="{{ asset('imgs/' . App\Models\RazonSocial::first()->logo) }}" alt="Logo">
-                    </a>
-                    <button class="navbar-toggler collapsed ml-auto mr-3" type="button" data-toggle="collapse"
-                        data-target="#navBarPrincipal" aria-controls="navBarPrincipal" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="fa fa-align-justify"></span>
-                    </button>
-
-                    <div class="navbar-collapse collapse p-1 text-xs-center" id="navBarPrincipal" style="">
-                        <ul class="navbar-nav mr-auto ml-auto">
-                            <li class="nav-item {{ request()->is('/') ? 'active' : '' }}">
-                                <a class="nav-link text-white" href="{{ route('inicio') }}">INICIO <span
-                                        class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item {{ request()->is('mas_vistos') ? 'active' : '' }}">
-                                <a class="nav-link text-white" href="{{ route('mas_vistos') }}">MÁS VISTOS</a>
-                            </li>
-                            <li class="nav-item {{ request()->is('revistas') ? 'active' : '' }}">
-                                <a class="nav-link text-white" href="{{ route('revistas') }}">REVISTAS</a>
-                            </li>
-                            <li class="nav-item {{ request()->is('areas*') ? 'active' : '' }} dropdown">
-                                <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown"
-                                    role="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    ÁREAS
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right bg-white"
-                                    aria-labelledby="navbarDropdown">
-                                    @foreach ($areas as $value)
-                                        <a class="dropdown-item"
-                                            href="{{ route('areas', $value->id) }}">{{ $value->nombre }}</a>
-                                    @endforeach
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-                {{-- <h1>{{App\Models\RazonSocial::first()->nombre}}</h1> --}}
-            </div>
-            <div class="carrito" id="_solicitudes_lector">
-                <a href="{{ route('solicituds_lector') }}" class="nav-link" data-toggle="tooltip" title="">
-                    <i class="fa fa-book"></i>
-                    <span class="badge badge-warning navbar-badge" id="count_solicitudes">0</span>
-                </a>
-            </div>
-            <div class="acceder">
-                <div class="administracion">
-                    <a href="{{ route('login') }}" title="Administración" data-toggle="tooltip"><i
-                            class="fa fa-chalkboard-teacher"></i></a>
-                </div>
-                <div class="lector">
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item carrito" id="_solicitudes_lector">
+                        <a href="{{ route('solicituds_lector') }}" class="bg2 p-1 rounded">
+                            <span class="text-white">Solicitudes</span>
+                            <span class="badge badge-warning" id="count_solicitudes">0</span>
+                        </a>
+                    </li>
                     @if (Session::has('logeado'))
-                        <ul class="navbar-nav justify-content-end">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown2"
-                                    role="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    <i class="fa fa-user"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right bg-white"
-                                    aria-labelledby="navbarDropdown2">
-                                    <a class="dropdown-item" href="{{ route('solicituds_lector') }}"><i
-                                            class="fa fa-book"></i> Ver solicitudes</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#"
-                                        onclick="document.getElementById('formCerrarSessionCli').submit()"><i
-                                            class="fa fa-sign-out-alt"></i> Cerrar sesión</a>
-                                    <form action="{{ route('cerrar_session_lector') }}" method="post"
-                                        id="formCerrarSessionCli">@csrf</form>
-                                </div>
-                            </li>
-                        </ul>
+                        <li class="nav-item dropdown">
+                            <a class="text-white dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-user"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right bg-white" aria-labelledby="navbarDropdown2">
+                                <a class="dropdown-item" href="{{ route('solicituds_lector') }}"><i
+                                        class="fa fa-book"></i> Ver solicitudes</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"
+                                    onclick="document.getElementById('formCerrarSessionCli').submit()"><i
+                                        class="fa fa-sign-out-alt"></i> Cerrar sesión</a>
+                                <form action="{{ route('cerrar_session_lector') }}" method="post"
+                                    id="formCerrarSessionCli">@csrf</form>
+                            </div>
+                        </li>
                     @else
-                        <div class="opciones_no_login">
-                            <a class="btn btn-block btn-sm bg-navy text-white" href="#" data-toggle="modal"
+                        <li class="nav-item">
+                            <a class="" href="#" data-toggle="modal"
                                 data-target="#modal-acceder_lector">Acceder</a>
-                            <a class="btn btn-block bg-white text-white btn-sm" href="#" data-toggle="modal"
+                        </li>
+                        <li class="nav-item">
+                            <a class="" href="#" data-toggle="modal"
                                 data-target="#modal-registrar_lector">Registro</a>
+                        </li>
+                    @endif
+
+                    <li class="nav-item px-2">
+                        <a href="{{ route('login') }}" title="Administración" data-toggle="tooltip"><i
+                                class="fa fa-chalkboard-teacher"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    @if (count($carrusels) > 0)
+                        @php
+                            $cont = 0;
+                        @endphp
+                        <ol class="carousel-indicators">
+                            @foreach ($carrusels as $carrusel)
+                                @php
+                                    $active = '';
+                                    if ($cont == 0) {
+                                        $active = 'active';
+                                    } else {
+                                        $active = '';
+                                    }
+                                @endphp
+                                <li data-target="#carouselExampleIndicators" data-slide-to="{{ $cont }}"
+                                    class="{{ $active }}"></li>
+                                @php
+                                    $cont++;
+                                @endphp
+                            @endforeach
+                        </ol>
+
+                        @php
+                            $cont = 0;
+                        @endphp
+                        <div class="carousel-inner">
+                            @foreach ($carrusels as $carrusel)
+                                @php
+                                    $active = '';
+                                    if ($cont == 0) {
+                                        $active = 'active';
+                                    } else {
+                                        $active = '';
+                                    }
+                                @endphp
+                                <div class="carousel-item {{ $active }}">
+                                    <img class="d-block w-100"
+                                        src="{{ asset('imgs/carrusel/' . $carrusel->imagen) }}"
+                                        alt="Imagen {{ $cont + 1 }}">
+                                </div>
+                                @php
+                                    $cont++;
+                                @endphp
+                            @endforeach
+                        </div>
+                    @else
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="{{ asset('imgs/carrusel/1.jpg') }}"
+                                    alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="{{ asset('imgs/carrusel/2.png') }}"
+                                    alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="{{ asset('imgs/carrusel/3.jpg') }}"
+                                    alt="Third slide">
+                            </div>
                         </div>
                     @endif
-                    {{-- <a href="" class="btn btn-warning btn-sm"><i class="fa fa-sign-in-alt"></i> Acceder</a> --}}
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                        data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Anterior</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                        data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Siguiente</span>
+                    </a>
                 </div>
             </div>
         </div>
-    </header>
-
+    </div>
 
     @include('modal.acceder_lector')
     @include('modal.registrar_lector')
@@ -220,7 +217,31 @@
     <input type="hidden" id="urlSolicitudesLector" value="{{ route('solicituds_lector') }}">
 
     <footer>
-        BIBLIOTECA - {{ date('Y') }}
+        @php
+            $rs = App\Models\RazonSocial::first();
+        @endphp
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    {{ $rs->nombre }}
+                </div>
+                <div class="col-12 text-center">
+                    {{ $rs->ciudad }}. {{ $rs->dir }}.
+                </div>
+                <div class="col-12 text-center">
+                    {{ $rs->fono }} - {{ $rs->cel }}
+                </div>
+                @if ($rs->correo)
+                    <div class="col-12 text-center">
+                        {{ $rs->correo }}
+                    </div>
+                @endif
+                <div class="col-12 text-center">
+                    <img src="{{ asset('imgs/' . $rs->logo) }}" alt="" width="120px" class="rounded">
+                </div>
+            </div>
+        </div>
+        Gestión {{ date('Y') }}
     </footer>
 
     <!-- REQUIRED SCRIPTS -->

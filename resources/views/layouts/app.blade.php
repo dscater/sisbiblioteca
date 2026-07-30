@@ -57,11 +57,12 @@
         } elseif (Auth::user()->tipo == 'EXTERNO') {
             $nombre_usuario = Auth::user()->usuarioEmpresa->nombre;
         }
+        $tipo_usuario = Auth::user()->tipo;
     @endphp
 
     <div class="wrapper">
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-dark navbar-warning bg-navy">
+        <nav class="main-header navbar navbar-expand navbar-dark navbar-warning bg1">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -139,7 +140,7 @@
                     </div>
                 </li> --}}
                 <!-- Notifications Dropdown Menu -->
-                {{-- <li class="nav-item dropdown">
+                <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="far fa-bell"></i>
                         <span class="badge badge-warning navbar-badge" id="nroNotificaciones">0</span>
@@ -147,7 +148,7 @@
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" id="contenedorNotificaciones">
 
                     </div>
-                </li> --}}
+                </li>
                 <li class="nav-item dropdown user user-menu">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                         <img src="{{ asset('imgs/users/' . Auth::user()->foto) }}"
@@ -193,9 +194,9 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar elevation-4 sidebar-dark-orange bg-navy">
+        <aside class="main-sidebar elevation-4 sidebar-light-navy">
             <!-- Brand Logo -->
-            <a href="{{ route('home') }}" class="brand-link navbar-warning bg-navy">
+            <a href="{{ route('home') }}" class="brand-link">
                 <img src="{{ asset('imgs/' . App\Models\RazonSocial::first()->logo) }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">{{ App\Models\RazonSocial::first()->alias }}</span>
@@ -204,14 +205,15 @@
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
+                <div class="user-panel mt-1 pb-1 mb-3 d-flex">
+                    <div class="image d-flex align-items-center">
                         <img src="{{ asset('imgs/users/' . Auth::user()->foto) }}" class="img-circle elevation-2"
                             alt="User Image">
                     </div>
                     <div class="info">
                         <a href="{{ route('users.config', Auth::user()->id) }}"
                             class="d-block">{{ $nombre_usuario }}</a>
+                        {{ $tipo_usuario }}
                     </div>
                 </div>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 29-07-2026 a las 19:21:32
+-- Tiempo de generación: 30-07-2026 a las 19:50:40
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.2.22
 
@@ -35,6 +35,14 @@ CREATE TABLE `areas` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `areas`
+--
+
+INSERT INTO `areas` (`id`, `nombre`, `descripcion`, `created_at`, `updated_at`) VALUES
+(1, 'AREA 1', '', '2026-07-30 22:56:06', '2026-07-30 22:56:06'),
+(2, 'AREA 2', '', '2026-07-30 22:56:10', '2026-07-30 22:56:10');
+
 -- --------------------------------------------------------
 
 --
@@ -61,6 +69,15 @@ CREATE TABLE `carrusels` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `carrusels`
+--
+
+INSERT INTO `carrusels` (`id`, `imagen`, `created_at`, `updated_at`) VALUES
+(1, '1785437642.jpg', '2026-07-30 22:54:02', '2026-07-30 22:54:02'),
+(2, '1785437648.jpg', '2026-07-30 22:54:08', '2026-07-30 22:54:08'),
+(3, '1785437653.jpg', '2026-07-30 22:54:13', '2026-07-30 22:54:13');
 
 -- --------------------------------------------------------
 
@@ -221,7 +238,40 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (12, '2026_07_28_084426_create_solicitud_prestamos_table', 1),
 (13, '2026_07_28_084439_create_prestamos_table', 1),
 (14, '2026_07_29_164550_create_razon_socials_table', 1),
-(15, '2026_07_29_164632_create_datos_usuarios_table', 1);
+(15, '2026_07_29_164632_create_datos_usuarios_table', 1),
+(16, '2026_07_30_194849_create_notificacions_table', 2),
+(17, '2026_07_30_194851_create_notificacion_users_table', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `notificacions`
+--
+
+CREATE TABLE `notificacions` (
+  `id` bigint UNSIGNED NOT NULL,
+  `descripcion` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fecha` date NOT NULL,
+  `hora` time NOT NULL,
+  `modulo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `registro_id` bigint UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `notificacion_users`
+--
+
+CREATE TABLE `notificacion_users` (
+  `id` bigint UNSIGNED NOT NULL,
+  `notificacion_id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -272,7 +322,7 @@ CREATE TABLE `razon_socials` (
 --
 
 INSERT INTO `razon_socials` (`id`, `nombre`, `alias`, `ciudad`, `dir`, `fono`, `cel`, `casilla`, `correo`, `logo`, `web`, `actividad_economica`, `created_at`, `updated_at`) VALUES
-(1, 'EMPRESA PRUEBA', 'CP', 'LA PAZ', 'ZONA LOS OLIVOS CALLE 3 #3232', '21134568', '78945612', '', '', 'logo.png', '', 'ACTIVIDAD ECONOMICA', '2026-07-29 23:10:21', '2026-07-29 23:10:21');
+(1, 'EMPRESA PRUEBA', 'CP', 'LA PAZ', 'ZONA LOS OLIVOS CALLE 3 #3232', '21134568', '78945612', '', '', 'logo1785436323.jpg', '', 'ACTIVIDAD ECONOMICA', '2026-07-29 23:10:21', '2026-07-30 22:32:03');
 
 -- --------------------------------------------------------
 
@@ -420,6 +470,20 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `notificacions`
+--
+ALTER TABLE `notificacions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `notificacion_users`
+--
+ALTER TABLE `notificacion_users`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `notificacion_users_notificacion_id_foreign` (`notificacion_id`),
+  ADD KEY `notificacion_users_user_id_foreign` (`user_id`);
+
+--
 -- Indices de la tabla `prestamos`
 --
 ALTER TABLE `prestamos`
@@ -465,7 +529,7 @@ ALTER TABLE `volumens`
 -- AUTO_INCREMENT de la tabla `areas`
 --
 ALTER TABLE `areas`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `autors`
@@ -477,7 +541,7 @@ ALTER TABLE `autors`
 -- AUTO_INCREMENT de la tabla `carrusels`
 --
 ALTER TABLE `carrusels`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_usuarios`
@@ -519,7 +583,19 @@ ALTER TABLE `lugars`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT de la tabla `notificacions`
+--
+ALTER TABLE `notificacions`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `notificacion_users`
+--
+ALTER TABLE `notificacion_users`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `prestamos`
@@ -584,6 +660,13 @@ ALTER TABLE `libros`
   ADD CONSTRAINT `libros_lugar_id_foreign` FOREIGN KEY (`lugar_id`) REFERENCES `lugars` (`id`),
   ADD CONSTRAINT `libros_ubicacion_id_foreign` FOREIGN KEY (`ubicacion_id`) REFERENCES `ubicacions` (`id`),
   ADD CONSTRAINT `libros_volumen_id_foreign` FOREIGN KEY (`volumen_id`) REFERENCES `volumens` (`id`);
+
+--
+-- Filtros para la tabla `notificacion_users`
+--
+ALTER TABLE `notificacion_users`
+  ADD CONSTRAINT `notificacion_users_notificacion_id_foreign` FOREIGN KEY (`notificacion_id`) REFERENCES `notificacions` (`id`),
+  ADD CONSTRAINT `notificacion_users_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Filtros para la tabla `solicitud_prestamos`
