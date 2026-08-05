@@ -10,6 +10,7 @@ use App\Http\Controllers\InicioController;
 use App\Http\Controllers\LectorController;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\LugarController;
+use App\Http\Controllers\NotificacionController;
 use App\Http\Controllers\PrestamoController;
 use App\Http\Controllers\RazonSocialController;
 use App\Http\Controllers\ReporteController;
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/clear-cache', function () {
     $exitCode = Artisan::call('cache:clear');
     $exitCode = Artisan::call('config:cache');
+    $exitCode = Artisan::call('optimize');
     return 'Proceso realizado';
 });
 
@@ -224,7 +226,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('solicituds/create', [SolicitudPrestamoController::class, 'create'])->name('solicituds.create');
 
-
     Route::get('solicituds/edit/{solicitud}', [SolicitudPrestamoController::class, 'edit'])->name('solicituds.edit');
 
     Route::put('solicituds/update/{solicitud}', [SolicitudPrestamoController::class, 'update'])->name('solicituds.update');
@@ -232,6 +233,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('solicituds/infoSolicitud', [SolicitudPrestamoController::class, 'infoSolicitud'])->name('solicituds.infoSolicitud');
 
     Route::get('solicituds/verificaSolicitudes', [SolicitudPrestamoController::class, 'verificaSolicitudes'])->name('solicituds.verificaSolicitudes');
+
+
+    // NOTIFICACIONES
+    Route::get('notificacions', [NotificacionController::class, 'index'])->name('notificacions.index');
+    Route::get('notificacions/show/{notificacion}', [NotificacionController::class, 'show'])->name('notificacions.show');
+    Route::get('notificacions/usuario', [NotificacionController::class, 'usuario'])->name('notificacions.usuario');
 
     // PRESTAMOS
     Route::get('prestamos', [PrestamoController::class, 'index'])->name('prestamos.index');

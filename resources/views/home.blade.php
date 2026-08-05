@@ -192,6 +192,9 @@
             mensajeNotificacion('{{ session('error') }}', 'error');
         @endif
 
+        @if (session('comprobantePrestamo'))
+            window.open("{{ session('comprobantePrestamo') }}", "_blank")
+        @endif
 
         $('table.data-table1').DataTable({
             order: [0, 'desc'],

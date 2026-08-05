@@ -50,7 +50,7 @@ class HomeController extends Controller
             ->get();
 
 
-        $solicituds = SolicitudPrestamo::all();
+        $solicituds = SolicitudPrestamo::orderBy("created_at", "DESC")->get();
 
         return view('home', compact('usuarios', 'prestamos', 'solicituds', 'libros', 'c_solicituds', 'c_prestamos'));
     }

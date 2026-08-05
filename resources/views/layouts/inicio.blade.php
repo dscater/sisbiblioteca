@@ -84,12 +84,15 @@
                         </a>
                     </li>
                     @if (Session::has('logeado'))
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown pr-2">
                             <a class="text-white dropdown-toggle" href="#" id="navbarDropdown2" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-user"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right bg-white" aria-labelledby="navbarDropdown2">
+                                <span href="#"
+                                    class="dropdown-item text-center">{{ Session::get('lector') }}</span>
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('solicituds_lector') }}"><i
                                         class="fa fa-book"></i> Ver solicitudes</a>
                                 <div class="dropdown-divider"></div>
@@ -109,12 +112,11 @@
                             <a class="" href="#" data-toggle="modal"
                                 data-target="#modal-registrar_lector">Registro</a>
                         </li>
+                        <li class="nav-item px-2">
+                            <a href="{{ route('login') }}" title="Administración" data-toggle="tooltip"><i
+                                    class="fa fa-chalkboard-teacher"></i></a>
+                        </li>
                     @endif
-
-                    <li class="nav-item px-2">
-                        <a href="{{ route('login') }}" title="Administración" data-toggle="tooltip"><i
-                                class="fa fa-chalkboard-teacher"></i></a>
-                    </li>
                 </ul>
             </div>
         </nav>

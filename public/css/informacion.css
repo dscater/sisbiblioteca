@@ -1,26 +1,13 @@
-.contenedor_info {
-    display: flex;
+.portada img {
+    width: 100% !important;
 }
-
-.contenedor_info .imagenes {
-    margin: 10px;
-    width: 400px !important;
-    overflow: hidden;
-}
-
-.contenedor_info .imagenes img {
-    margin: 10px;
+.contraportada img {
+    width: 100% !important;
 }
 
 .resumen {
     padding: 8px;
     text-align: justify;
-}
-
-.contenedor_adicional {
-    margin: 10px;
-    border: solid 1px;
-    width: 500px;
 }
 
 .info_adicional {
@@ -57,4 +44,5 @@
     }
 }
 
-@media (max-width: 400px) {}
+@media (max-width: 400px) {
+}

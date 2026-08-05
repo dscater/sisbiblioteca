@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger("notificacion_id");
             $table->unsignedBigInteger("user_id");
+            $table->integer("visto")->default(0);
             $table->timestamps();
 
             $table->foreign("notificacion_id")->on("notificacions")->references("id");

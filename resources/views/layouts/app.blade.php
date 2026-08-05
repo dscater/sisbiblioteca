@@ -145,8 +145,16 @@
                         <i class="far fa-bell"></i>
                         <span class="badge badge-warning navbar-badge" id="nroNotificaciones">0</span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" id="contenedorNotificaciones">
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
+                        <span class="dropdown-item dropdown-header"><span id="totalNotificaciones">0</span>
+                            Notificaciones</span>
+                        <div class="dropdown-divider"></div>
+                        <div id="contenedorNotificaciones">
 
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a href="{{ route('notificacions.index') }}" class="dropdown-item dropdown-footer">Ver todas
+                            las Notificaciones</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown user user-menu">
@@ -251,6 +259,9 @@
         <input type="hidden" name="token" id="token" value="{{ csrf_token() }}">
         <input type="hidden" name="urlVerificaSolicitudes" id="urlVerificaSolicitudes"
             value="{{ route('solicituds.verificaSolicitudes') }}">
+
+        <input type="hidden" name="urlNotificaciones" id="urlNotificaciones"
+            value="{{ route('notificacions.usuario') }}">
         <!-- Main Footer -->
         <footer class="main-footer">
             <strong>Copyright &copy; {{ date('Y') }} BIBLIOTECA</strong>
@@ -301,6 +312,7 @@
 
     {{-- DEBOUNCE --}}
     <script src="{{ asset('js/debounce.js') }}"></script>
+    <script src="{{ asset('js/notificacion.js') }}"></script>
 
     {{-- STEPS --}}
     {{-- <script src="{{ asset('jquery-steps/src/defaults.js') }}"></script>

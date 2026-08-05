@@ -268,13 +268,14 @@ nav.navbar.navbar-expand-lg.navbar-dark {
 
 .contenedor {
     /* background: rgb(238, 238, 238); */
-    background: rgb(109, 109, 109);
+    background: var(--bg1);
     padding: 5px;
     flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid 2px rgb(83, 83, 83);
+    border: solid 2px var(--bg3);
+    border-radius: 8px;
     text-align: center;
     color: white;
     margin-bottom: 10px;
@@ -305,7 +306,7 @@ nav.navbar.navbar-expand-lg.navbar-dark {
 /* INFORMACION LIBRO MODAL */
 .contenedor_info_prestamo {
     width: 100%;
-    background: black;
+    background: var(--bg1);
     color: white;
 }
 

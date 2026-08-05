@@ -7,7 +7,7 @@ use App\Models\Prestamo;
 use App\Models\Lector;
 use App\Models\Libro;
 use App\Models\SolicitudPrestamo;
-use Barryvdh\DomPDF\Facade as PDF;
+use PDF;
 
 class PrestamoController extends Controller
 {

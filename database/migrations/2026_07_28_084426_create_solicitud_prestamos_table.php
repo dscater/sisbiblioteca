@@ -15,7 +15,7 @@ class CreateSolicitudPrestamosTable extends Migration
     {
         Schema::create('solicitud_prestamos', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('codigo');
+            $table->string('codigo', 40);
             $table->bigInteger('libro_id')->unsigned();
             $table->bigInteger('lector_id')->unsigned();
             $table->dateTime('fecha_solicitud');

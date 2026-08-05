@@ -25,11 +25,6 @@ class DatosUsuario extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User', 'user_id', 'id');
-    }
-
-    public function doctor()
-    {
-        return $this->hasOne('App\Models\Doctor', 'datos_usuario_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

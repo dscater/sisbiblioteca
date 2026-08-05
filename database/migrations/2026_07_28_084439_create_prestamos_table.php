@@ -16,14 +16,14 @@ class CreatePrestamosTable extends Migration
         Schema::create('prestamos', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('libro_id')->unsigned();
-            $table->bigInteger('solicitud_id')->unsigned();
-            $table->bigInteger('lector_id')->unsigned();
+            $table->bigInteger('solicitud_id')->unsigned()->nullable();
+            $table->bigInteger('lector_id')->unsigned()->nullable();
             $table->string('tipo');
             $table->text('observaciones')->nullable();
             $table->text('descripcion')->nullable();
             $table->date('fecha_registro');
             $table->date('fecha_devolucion')->nullable();
-            $table->integer('estado');
+            $table->integer('estado')->default(1);
             $table->timestamps();
         });
     }

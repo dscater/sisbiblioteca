@@ -80,7 +80,8 @@
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('prestamos.index') }}" class="nav-link {{ request()->is('prestamos*') ? 'active' : '' }}">
+    <a href="{{ route('notificacions.index') }}"
+        class="nav-link {{ request()->is('notificacions*') ? 'active' : '' }}">
         <i class="nav-icon fa fa-bell"></i>
         <p>Notificaciones</p>
     </a>

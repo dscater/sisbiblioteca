@@ -29,7 +29,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <input type="text" name="apellidos" value="{{ old('apellidos') }}"
-                                        class="form-control" autofocus placeholder="Apelldos" required>
+                                        class="form-control" autofocus placeholder="Apellidos" required>
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <span class="fas fa-user"></span>

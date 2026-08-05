@@ -139,7 +139,7 @@
 <body>
     <div class="encabezado">
         <div class="logo">
-            <img src="{{ asset('imgs/' . App\Models\RazonSocial::first()->logo) }}">
+            <img src="{{ App\Models\RazonSocial::first()->logo_b64 }}" alt="Logo">
         </div>
         <h2 class="titulo">
             {{ App\Models\RazonSocial::first()->nombre }}
