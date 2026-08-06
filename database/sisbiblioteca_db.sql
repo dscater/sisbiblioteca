@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 05-08-2026 a las 16:27:56
+-- Tiempo de generación: 06-08-2026 a las 15:45:07
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.2.22
 
@@ -325,8 +325,7 @@ CREATE TABLE `notificacions` (
 --
 
 INSERT INTO `notificacions` (`id`, `tipo_notificacion`, `descripcion`, `fecha`, `hora`, `modulo`, `registro_id`, `created_at`, `updated_at`) VALUES
-(1, 'PRESTAMO VENCIDO', 'SE NOTIFICA QUE EL PRESTAMO DEL LIBRO PRIMER LIBRO DEL LECTOR JUAN PERES CON C.I. 123456 YA VENCIO SU FECHA DE DEVOLUCION', '2026-08-05', '12:13:44', 'Prestamo', 6, '2026-08-05 16:13:44', '2026-08-05 16:13:44'),
-(2, 'PRESTAMO VENCIDO', 'SE NOTIFICA QUE EL PRESTAMO DEL LIBRO SEGUNDO LIBRO DEL LECTOR JUAN PERES CON C.I. 123456 YA VENCIO SU FECHA DE DEVOLUCION', '2026-08-05', '12:13:44', 'Prestamo', 7, '2026-08-05 16:13:44', '2026-08-05 16:13:44');
+(1, 'PRESTAMO VENCIDO', 'SE NOTIFICA QUE EL PRESTAMO DEL LIBRO PRIMER LIBRO DEL LECTOR JUAN PERES CON C.I. 123456 YA VENCIO SU FECHA DE DEVOLUCION', '2026-08-06', '11:44:37', 'Prestamo', 10, '2026-08-06 15:44:40', '2026-08-06 15:44:40');
 
 -- --------------------------------------------------------
 
@@ -348,10 +347,8 @@ CREATE TABLE `notificacion_users` (
 --
 
 INSERT INTO `notificacion_users` (`id`, `notificacion_id`, `user_id`, `visto`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, '2026-08-05 16:13:44', '2026-08-05 16:14:34'),
-(2, 1, 3, 0, '2026-08-05 16:13:44', '2026-08-05 16:13:44'),
-(3, 2, 1, 1, '2026-08-05 16:13:44', '2026-08-05 16:14:39'),
-(4, 2, 3, 0, '2026-08-05 16:13:44', '2026-08-05 16:13:44');
+(1, 1, 1, 0, '2026-08-06 15:44:40', '2026-08-06 15:44:40'),
+(2, 1, 3, 0, '2026-08-06 15:44:40', '2026-08-06 15:44:40');
 
 -- --------------------------------------------------------
 
@@ -494,7 +491,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `password`, `tipo`, `foto`, `estado`, `created_at`, `updated_at`) VALUES
 (1, 'admin', '$2y$12$jr/rq1N3Ddc9oqWT/3Sap.wDYjz8/IbXXJwsWSZRytrad3SQwMPUu', 'ADMINISTRADOR', 'user_default.png', 1, '2026-07-29 23:10:21', '2026-07-29 23:10:21'),
-(2, 'juan@gmail.com', '$2y$12$7XE/B1pGfQ1jSTAEjAu.KeUIw8YxrL22oXSkY1zGG6V/ir39Mobli', 'LECTOR', 'user_default.png', 1, '2026-08-05 18:49:08', '2026-08-05 18:49:08'),
+(2, 'victorgonzalo.as@gmail.com', '$2y$12$7XE/B1pGfQ1jSTAEjAu.KeUIw8YxrL22oXSkY1zGG6V/ir39Mobli', 'LECTOR', 'user_default.png', 1, '2026-08-05 18:49:08', '2026-08-05 18:49:08'),
 (3, 'JPERES', '$2y$12$Ll/G.zlVr.yDmub9ZiM7s.fFy88k1HsrRv/AHZidL9VdodYpdQU12', 'AUXILIAR', 'JUAN1785941999.jpg', 1, '2026-08-05 18:59:59', '2026-08-05 18:59:59');
 
 -- --------------------------------------------------------
@@ -713,13 +710,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `notificacions`
 --
 ALTER TABLE `notificacions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `notificacion_users`
 --
 ALTER TABLE `notificacion_users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `prestamos`

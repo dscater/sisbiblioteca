@@ -36,7 +36,7 @@
                             <p><strong>Descripción:</strong> {{ $notificacion->descripcion }}</p>
                             <div class="row">
                                 <div class="col-12">
-                                    <h3>Información del Préstamo</h3>
+                                    <h3>Información</h3>
                                 </div>
                             </div>
                             @if ($notificacion->modulo == 'Prestamo')
@@ -46,9 +46,15 @@
                                 <p><strong>Editorial:</strong> {{ $notificacion->prestamo->libro->editorial->nombre }}</p>
                                 <p><strong>Volumen:</strong> {{ $notificacion->prestamo->libro->volumen->nombre }}</p>
                                 <hr>
-                                <p><strong>Código Solicitud:</strong> {{ $notificacion->prestamo->solicitud->codigo }}</p>
-                                <p><strong>Fecha Solicitud:</strong>
-                                    {{ $notificacion->prestamo->solicitud->fecha_solicitud }}</p>
+                                @if ($notificacion->prestamo->solicitud)
+                                    <p><strong>Tipo Registro:</strong> PORTAL</p>
+                                    <p><strong>Código Solicitud:</strong> {{ $notificacion->prestamo->solicitud->codigo }}
+                                    </p>
+                                    <p><strong>Fecha Solicitud:</strong>
+                                        {{ $notificacion->prestamo->solicitud->fecha_solicitud }}</p>
+                                @else
+                                    <p><strong>Tipo Registro:</strong> SISTEMA</p>
+                                @endif
                                 <p><strong>Lector:</strong> {{ $notificacion->prestamo->lector->nombre }}
                                     {{ $notificacion->prestamo->lector->apellidos }}</p>
                                 <p><strong>C.I.:</strong> {{ $notificacion->prestamo->lector->ci }}
