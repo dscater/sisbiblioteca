@@ -121,7 +121,7 @@ class AgenteInteligenteController extends Controller
         // DEVOLUCIONES VENCIDOS/PASADOS
         // ================================
         $prestamos_pasados = Prestamo::where("estado", 1)
-            ->where("fecha_devolucion", ">", $fecha_actual)
+            ->where("fecha_devolucion", "<", $fecha_actual)
             ->where('tipo', "EGRESO")
             ->where('estado', 1)
             ->where("lector_id", "!=", null)
