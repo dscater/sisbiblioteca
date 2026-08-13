@@ -11,7 +11,7 @@
             <div class="card-header">
                 <h3 class="titulo_seccion">LISTA DE SOLICITUDES</h3>
             </div>
-            <div class="card-body">
+            <div class="card-body overflow-auto">
                 <table id="example2" class="table data-table table-bordered table-hover">
                     <thead>
                         <tr>
